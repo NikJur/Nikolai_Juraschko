@@ -1,52 +1,60 @@
 /**
- * Initialise the 3D Globe with pinpoints.
- * The globe is fixed in the background while content scrolls.
+ * Initialise the 3D Globe for the left-hand column.
+ * width as half the window width.
  */
-const globeContainer = document.getElementById('globe-container');
+document.addEventListener('DOMContentLoaded', () => {
+    const globeContainer = document.getElementById('globe-container');
+    
+    const globe = Globe()
+      .width(window.innerWidth / 2) // Set to half-width
+      .height(window.innerHeight)
+      .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+      .backgroundColor('rgba(0,0,0,0)') 
+      (globeContainer);
 
-const globe = Globe()
-  (globeContainer)
-  .width(window.innerWidth)
-  .height(window.innerHeight)
-  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-  .backgroundColor('rgba(0,0,0,0)'); // Makes background transparent to show CSS stars/colors
-  (globeContainer); // "calls" globe into the div
+    // Ensure the globe center stays centered in its half-width container
+    globe.controls().staticMoving = true;
+    
+    // Resize handler must also account for the 50% width
+    window.addEventListener('resize', () => {
+      globe.width(window.innerWidth / 2);
+      globe.height(window.innerHeight);
+    });
 
-// Location data
-const locations = [
-  { id: 'switzerland', lat: 47.37, lng: 8.54, label: 'Zurich' },
-  { id: 'uk', lat: 51.5074, lng: -0.1278, label: 'London' }
-];
+    // Set up location data
+    const locations = [
+      { id: 'switzerland', lat: 47.37, lng: 8.54, label: 'Zurich' },
+      { id: 'uk', lat: 51.75, lng: -1.25, label: 'Oxford' }
+    ];
 
-globe.pointsData(locations)
-  .pointRadius(0.5)
-  .pointColor(() => 'orange');
+    globe.pointsData(locations)
+      .pointRadius(0.7)
+      .pointColor(() => '#0d62c4');
 
-/**
- * Setup ScrollTrigger to rotate globe when sections enter view.
- */
-gsap.registerPlugin(ScrollTrigger);
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
 
-locations.forEach(loc => {
-  ScrollTrigger.create({
-    trigger: `#${loc.id}`,
-    start: "top center",
-    // When scrolling down into the section
-    onEnter: () => {
-      globe.pointOfView({ lat: loc.lat, lng: loc.lng, alt: 2 }, 1000);
-    },
-    // When scrolling back up into the section
-    onEnterBack: () => {
-      globe.pointOfView({ lat: loc.lat, lng: loc.lng, alt: 2 }, 1000);
-    }
-  });
-});
+    /**
+     * Function: updateGlobeRotation
+     * Description: Smoothly rotates the globe to specific coordinates.
+     */
+    const updateGlobeRotation = (lat, lng) => {
+        globe.pointOfView({ lat, lng, alt: 2 }, 1200);
+    };
 
-/**
- * Ensure globe resizes if the window changes size.
- */
-window.addEventListener('resize', () => {
-  globe.width(window.innerWidth);
-  globe.height(window.innerHeight);
+    // Apply scroll logic to each section
+    locations.forEach(loc => {
+      ScrollTrigger.create({
+        trigger: `#${loc.id}`,
+        start: "top center",
+        onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
+        onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
+      });
+    });
+
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+      globe.width(window.innerWidth);
+      globe.height(window.innerHeight);
+    });
 });
