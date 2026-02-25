@@ -58,7 +58,7 @@ main {
 /* Marketing Card */
 .content-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 15px;
@@ -75,6 +75,12 @@ h1, h2 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* blue highlight text */
+.blue-text {
+  color: #004aa5; 
+  -webkit-text-fill-color: #004aa5; /* Ensuring override of any global h1 styles */
 }
 
 p {

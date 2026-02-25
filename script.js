@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .width(window.innerWidth / 2) // Set to half-width
       .height(window.innerHeight)
       .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-      .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+      .backgroundImageUrl('https://raw.githubusercontent.com/NikJur/Nikolai_Juraschko/main/night-sky_amended.png')
       .backgroundColor('rgba(0,0,0,0)') 
       (globeContainer);
 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     globe.pointsData(locations)
       .pointRadius(0.7)
-      .pointColor(() => '#0d62c4');
+      .pointColor(() => '#004aa5');
 
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
