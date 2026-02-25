@@ -6,9 +6,12 @@ const globeContainer = document.getElementById('globe-container');
 
 const globe = Globe()
   (globeContainer)
-  .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-  .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-  .backgroundColor('rgba(0,0,0,0)'); // Makes background transparent to show your CSS stars/colors
+  .width(window.innerWidth)
+  .height(window.innerHeight)
+  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+  .backgroundColor('rgba(0,0,0,0)'); // Makes background transparent to show CSS stars/colors
+  (globeContainer); // "calls" globe into the div
 
 // Corrected Data for your locations
 const locations = [
