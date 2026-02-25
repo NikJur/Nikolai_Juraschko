@@ -26,6 +26,21 @@ body, html {
     text-align: center;
 }
 
+/* Scroll Instructions at the top right of the page */
+.site-instructions {
+    position: fixed;
+    top: 20px;
+    right: 1%;
+    font-size: 0.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.5); 
+    z-index: 100; /* above everything */
+    pointer-events: none; /* Prevents it from blocking clicks to the globe */
+    text-align: right; /* Ensures text aligns to the right if it wraps */
+}
+
 /* Layout Containers */
 #globe-container {
     position: fixed;
@@ -86,4 +101,6 @@ h1, h2 {
 p {
   line-height: 1.6;
   color: #ccc;
+  text-align: justify; /* block text formatting */
+  hyphens: auto;       /* handles word breaks to keep blocks tight (optional tbh) */
 }

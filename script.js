@@ -24,9 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set up location data
     const locations = [
-      { id: 'switzerland', lat: 47.37, lng: 8.54, label: 'Zurich' },
-      { id: 'uk', lat: 51.75, lng: -1.25, label: 'Oxford' }
+      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University' },
+      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL' },
+      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG' }
     ];
+
+    // Ensure your ScrollTrigger loop uses these new locations
+    locations.forEach(loc => {
+      ScrollTrigger.create({
+        trigger: `#${loc.id}`,
+        start: "top center",
+        onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
+        onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
+      });
+    });
 
     globe.pointsData(locations)
       .pointRadius(0.7)
