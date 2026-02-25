@@ -1,16 +1,19 @@
 /**
- * Initialize the 3D Globe with pinpoints.
+ * Initialise the 3D Globe with pinpoints.
  * The globe is fixed in the background while content scrolls.
  */
-const globe = Globe()
-  (document.getElementById('globe-container'))
-  .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-  .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png');
+const globeContainer = document.getElementById('globe-container');
 
-// Data for your locations
+const globe = Globe()
+  (globeContainer)
+  .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+  .backgroundColor('rgba(0,0,0,0)'); // Makes background transparent to show your CSS stars/colors
+
+// Corrected Data for your locations
 const locations = [
   { id: 'switzerland', lat: 47.37, lng: 8.54, label: 'Zurich' },
-  { id: 'usa', lat: 42.36, lng: -71.05, label: 'Boston' }
+  { id: 'uk', lat: 51.5074, lng: -0.1278, label: 'London' }
 ];
 
 globe.pointsData(locations)
@@ -26,11 +29,21 @@ locations.forEach(loc => {
   ScrollTrigger.create({
     trigger: `#${loc.id}`,
     start: "top center",
+    // When scrolling down into the section
     onEnter: () => {
       globe.pointOfView({ lat: loc.lat, lng: loc.lng, alt: 2 }, 1000);
     },
+    // When scrolling back up into the section
     onEnterBack: () => {
       globe.pointOfView({ lat: loc.lat, lng: loc.lng, alt: 2 }, 1000);
     }
   });
+});
+
+/**
+ * Ensure globe resizes if the window changes size.
+ */
+window.addEventListener('resize', () => {
+  globe.width(window.innerWidth);
+  globe.height(window.innerHeight);
 });
