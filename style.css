@@ -1,1 +1,62 @@
+/* General Reset and Typography */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #000; /* Deep black for 3D space contrast */
+  color: #fff;
+  font-family: 'Inter', -apple-system, sans-serif;
+  scroll-behavior: smooth;
+}
 
+/* Fixed Globe Container */
+#globe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Keep globe behind all content */
+}
+
+/* Layout for Scrollable Sections */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Transparent Marketing Sections */
+.location-step {
+  height: 100vh; /* One full screen per location */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+
+/* The Glassmorphism Card Effect */
+.content-card {
+  background: rgba(255, 255, 255, 0.05); /* Very subtle white */
+  backdrop-filter: blur(10px); /* Blur the globe behind the text */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* High-Impact Typography */
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-top: 0;
+  background: linear-gradient(to right, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  line-height: 1.6;
+  color: #ccc;
+}
