@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .width(window.innerWidth / 2) // Set to half-width
       .height(window.innerHeight)
       .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+      .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
       .backgroundColor('rgba(0,0,0,0)') 
       (globeContainer);
 
