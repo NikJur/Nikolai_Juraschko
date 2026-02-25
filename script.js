@@ -13,7 +13,7 @@ const globe = Globe()
   .backgroundColor('rgba(0,0,0,0)'); // Makes background transparent to show CSS stars/colors
   (globeContainer); // "calls" globe into the div
 
-// Corrected Data for your locations
+// Location data
 const locations = [
   { id: 'switzerland', lat: 47.37, lng: 8.54, label: 'Zurich' },
   { id: 'uk', lat: 51.5074, lng: -0.1278, label: 'London' }
