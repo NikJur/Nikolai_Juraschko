@@ -21,14 +21,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Set up location data
     const locations = [
-      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University' },
-      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL' },
-      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG' }
+      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "OU", textOffset: -1.5 /** Nudge text west */ },
+      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */ },
+      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0 }
     ];
 
     globe.pointsData(locations)
       .pointRadius(0.7)
       .pointColor(() => '#004aa5');
+
+    /**
+     * Add text labels to the globe coordinates.
+     * Description: Displays the 'label' property from the locations array
+     * at the specified lat/lng coordinates.
+     */
+    globe.labelsData(locations)
+      .labelLat(d => d.lat)
+      .labelLng(d => d.lng + (d.textOffset || 0)) // Applies the nudge west/east based on the textOffset property so labels don't overlap with each other      
+      .labelText(d => d.customLabel)
+      .labelSize(1.0) // size of text label
+      .labelDotRadius(0.2)
+      .labelColor(() => '#004aa5')
+      .labelAltitude(0.1) // Lifts text slightly off the globe surface
+      .labelResolution(3);
 
     /**
      * Function: updateGlobeRotation
