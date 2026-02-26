@@ -26,6 +26,42 @@ window.addEventListener('DOMContentLoaded', () => {
       { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0 }
     ];
 
+    // 360 GLOBE SPIN FOR HEADERS DEACTIVATED BC TOO LAGGY AT FAST SCROLLING!!!!!!!!!!!!!!!!!!
+    // /**
+    // * Function: updateGlobeRotation
+    // * Description: Smoothly rotates the globe to specific coordinates.
+    // */
+    // const updateGlobeRotation = (lat, lng) => {
+    //     globe.pointOfView({ lat, lng, alt: 2 }, 1200);
+    // };
+
+    // /**
+    //  * Function: performGlobalSpin
+    //  * Description: Uses GSAP to animate a smooth 360-degree longitudinal sweep.
+    //  * This prevents the "jump" by forcing a frame-by-frame rotation.
+    //  */
+    // const performGlobalSpin = () => {
+    //     const pov = globe.pointOfView();
+        
+    //     // Create a dummy object to animate values smoothly
+    //     const obj = { lng: pov.lng, alt: pov.alt };
+        
+    //     gsap.to(obj, {
+    //         lng: pov.lng + 360,
+    //         alt: 3, // Slight zoom out for the global effect
+    //         duration: 2,
+    //         ease: "power2.inOut",
+    //         onUpdate: () => {
+    //             globe.pointOfView({ 
+    //                 lat: pov.lat, 
+    //                 lng: obj.lng, 
+    //                 alt: obj.alt 
+    //             });
+    //         }
+    //     });
+    // };
+
+    // Initialise points and labels on the globe
     globe.pointsData(locations)
       .pointRadius(0.2) // size of the point on the globe
       .pointColor(() => '#004aa5');
@@ -45,13 +81,12 @@ window.addEventListener('DOMContentLoaded', () => {
       .labelAltitude(0.1) // Lifts text slightly off the globe surface
       .labelResolution(3);
 
-    /**
-     * Function: updateGlobeRotation
-     * Description: Smoothly rotates the globe to specific coordinates.
-     */
-    const updateGlobeRotation = (lat, lng) => {
-        globe.pointOfView({ lat, lng, alt: 2 }, 1200);
-    };
+    // Trigger the spin ONLY when the Education header comes into view
+    ScrollTrigger.create({
+        trigger: "#trigger-education",
+        start: "top center",
+        onEnter: () => performGlobalSpin()
+    });
 
     // Apply scroll logic to each section
     locations.forEach(loc => {
