@@ -26,16 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
       { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG' }
     ];
 
-    // Ensure your ScrollTrigger loop uses these new locations
-    locations.forEach(loc => {
-      ScrollTrigger.create({
-        trigger: `#${loc.id}`,
-        start: "top 60%", // Adjusted from 'center' to account for shorter sections
-        onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
-        onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
-      });
-    });
-
     globe.pointsData(locations)
       .pointRadius(0.7)
       .pointColor(() => '#004aa5');
