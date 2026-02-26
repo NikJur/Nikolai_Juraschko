@@ -104,3 +104,32 @@ p {
   text-align: justify; /* block text formatting */
   hyphens: auto;       /* handles word breaks to keep blocks tight (optional tbh) */
 }
+
+/* Container that breaks out of the right-hand column */
+.section-overlay-header {
+    width: 100vw;
+    height: 15vh; /* Give it some vertical presence */
+    display: flex;
+    align-items: flex-end; /* Aligns text to the bottom, near the line */
+    justify-content: flex-start; /* Align text to the left */
+    margin-left: -50vw; /* Pull back across the globe */
+    padding-left: 5vw; /* Space from the far left edge */
+    padding-bottom: 10px; /* Space between text and the line */
+    position: relative;
+    z-index: 15; /* Ensure it sits above the globe */
+    pointer-events: none; /* Allows user to still click the globe behind the text */
+
+    /* The Full-Width Blue Line */
+    border-bottom: 2px solid #004aa5; 
+    box-sizing: border-box;
+}
+
+/* The "Education" text styling */
+.overlay-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ccc;
+    -webkit-text-fill-color: #ccc;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
