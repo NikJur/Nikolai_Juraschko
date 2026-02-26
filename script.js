@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
       .labelLng(d => d.lng + (d.textOffset || 0)) // Applies the nudge west/east based on the textOffset property so labels don't overlap with each other      
       .labelText(d => d.customLabel)
       .labelSize(1.0) // size of text label
-      .labelDotRadius(0.2)
+      .labelDotRadius(0)
       .labelColor(() => '#004aa5')
       .labelAltitude(0.1) // Lifts text slightly off the globe surface
       .labelResolution(3);
