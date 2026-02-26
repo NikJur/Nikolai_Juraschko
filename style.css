@@ -46,8 +46,8 @@ body, html {
     position: fixed;
     top: 0;
     left: 0;
-    width: 50vw; /* Take up exactly half the screen */
-    height: 100vh;
+    width: 50vw !important; /* Take up exactly half the screen */
+    height: 100vh !important; /* important forces adjerence to size specfs */
     z-index: 1;  /* Bring to front so it's visible */
     background-color: transparent;
 }

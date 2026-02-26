@@ -2,11 +2,14 @@
  * Initialise the 3D Globe for the left-hand column.
  * width as half the window width.
  */
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const globeContainer = document.getElementById('globe-container');
+
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
     
     const globe = Globe()
-      .width(window.innerWidth / 2) // Set to half-width
+      .width(window.innerWidth)
       .height(window.innerHeight)
       .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
       .backgroundImageUrl('https://raw.githubusercontent.com/NikJur/Nikolai_Juraschko/main/night-sky_amended.png')
@@ -15,12 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensure the globe center stays centered in its half-width container
     globe.controls().staticMoving = true;
-    
-    // Resize handler must also account for the 50% width
-    window.addEventListener('resize', () => {
-      globe.width(window.innerWidth / 2);
-      globe.height(window.innerHeight);
-    });
 
     // Set up location data
     const locations = [
@@ -43,9 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .pointRadius(0.7)
       .pointColor(() => '#004aa5');
 
-    // Register GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
-
     /**
      * Function: updateGlobeRotation
      * Description: Smoothly rotates the globe to specific coordinates.
@@ -58,13 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     locations.forEach(loc => {
       ScrollTrigger.create({
         trigger: `#${loc.id}`,
-        start: "top center",
+        start: "top 60%", // Adjusted from 'center' to account for shorter sections
         onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
         onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
       });
     });
 
-    // Handle Window Resize
+    // Handle Window Resize 
     window.addEventListener('resize', () => {
       globe.width(window.innerWidth);
       globe.height(window.innerHeight);
