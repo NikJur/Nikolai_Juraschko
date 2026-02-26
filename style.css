@@ -61,11 +61,11 @@ main {
 
 /* Sections */
 .location-step {
-    min-height: 100vh;
+    min-height: 40vh; /* redue to bring cards closer - 100 would be full scroll before next card */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem 2rem; /* Reduced top/bottom padding */
     /* Crucial: Ensure sections have NO background color */
     background: transparent !important; 
 }

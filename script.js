@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     locations.forEach(loc => {
       ScrollTrigger.create({
         trigger: `#${loc.id}`,
-        start: "top center",
+        start: "top 60%", // Adjusted from 'center' to account for shorter sections
         onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
         onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
       });
