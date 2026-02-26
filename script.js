@@ -21,20 +21,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Set up location data
     const locations = [
-      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "OU", textOffset: -1.5 /** Nudge text west */ },
-      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */ },
-      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0 }
+      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "OU", textOffset: -1.5 /** Nudge text west */, alt: 0.5 /** custom zoom in on globe */ },
+      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */ , alt: 2 /** default */ },
+      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0, alt: 2 }
     ];
 
-    // 360 GLOBE SPIN FOR HEADERS DEACTIVATED BC TOO LAGGY AT FAST SCROLLING!!!!!!!!!!!!!!!!!!
+    const updateGlobeRotation = (lat, lng, alt = 2) => {
+        globe.pointOfView({ lat, lng, alt }, 1200);
+    };
+
+       // 360 GLOBE SPIN FOR HEADERS DEACTIVATED BC TOO LAGGY AT FAST SCROLLING!!!!!!!!!!!!!!!!!!
     // /**
     // * Function: updateGlobeRotation
     // * Description: Smoothly rotates the globe to specific coordinates.
     // */
-    // const updateGlobeRotation = (lat, lng) => {
-    //     globe.pointOfView({ lat, lng, alt: 2 }, 1200);
-    // };
-
     // /**
     //  * Function: performGlobalSpin
     //  * Description: Uses GSAP to animate a smooth 360-degree longitudinal sweep.
@@ -81,20 +81,22 @@ window.addEventListener('DOMContentLoaded', () => {
       .labelAltitude(0.1) // Lifts text slightly off the globe surface
       .labelResolution(3);
 
-    // Trigger the spin ONLY when the Education header comes into view
-    ScrollTrigger.create({
-        trigger: "#trigger-education",
-        start: "top center",
-        onEnter: () => performGlobalSpin()
-    });
+
+    // 360 Spin DEACTIVATED BC TOO LAGGY AT FAST SCROLLING!!!!!!!!!!!!!!!!!!
+    // // Trigger the spin ONLY when the Education header comes into view
+    // ScrollTrigger.create({
+    //     trigger: "#trigger-education",
+    //     start: "top center",
+    //     onEnter: () => performGlobalSpin()
+    // });
 
     // Apply scroll logic to each section
     locations.forEach(loc => {
       ScrollTrigger.create({
         trigger: `#${loc.id}`,
         start: "top 60%", // Adjusted from 'center' to account for shorter sections
-        onEnter: () => updateGlobeRotation(loc.lat, loc.lng),
-        onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng)
+        onEnter: () => updateGlobeRotation(loc.lat, loc.lng, loc.alt),
+        onEnterBack: () => updateGlobeRotation(loc.lat, loc.lng, loc.alt)
       });
     });
 
