@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
     ];
 
     globe.pointsData(locations)
-      .pointRadius(0.7)
+      .pointRadius(0.2) // size of the point on the globe
       .pointColor(() => '#004aa5');
 
     /**
