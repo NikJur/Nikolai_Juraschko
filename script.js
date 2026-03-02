@@ -21,9 +21,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Set up location data
     const locations = [
+      // --- Education ---
       { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "OU", textOffset: -1.5 /** Nudge text west */, alt: 0.5 /** custom zoom in on globe */ },
       { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */ , alt: 2 /** default */ },
-      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0, alt: 2 }
+      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0, alt: 2 },
+
+      // --- Relevant Experience ---
+      { id: 'RSE-AI4Science', lat: 51.7520, lng: -1.2577, label:"", customLabel: "", textOffset: 0, zoomAlt: 0.6 }, // Oxford
+      { id: 'rosalind-franklin', lat: 51.5732, lng: -1.3149, label:"", customLabel: "RFI", textOffset: -1.2, zoomAlt: 0.7 }, // Harwell Campus
+      { id: 'turing-enrichment', lat: 51.5299, lng: -0.1277, label:"", customLabel: "Turing", textOffset: 2.5, zoomAlt: 0.8 }, // London
+      { id: 'turing-dsg', lat: 51.5299, lng: -0.1277, label:"", customLabel: "", textOffset: 0, zoomAlt: 1.2 }, // London (Wider Zoom)
+      { id: 'cambridge-rep', lat: 52.2053, lng: 0.1218, label:"", customLabel: "Cambridge", textOffset: 1.5, zoomAlt: 0.8 }, // Cambridge
+      { id: 'zerog-internship', lat: 50.1109, lng: 8.6821, label:"", customLabel: "zeroG", textOffset: 1.0, zoomAlt: 1.5 }, // Frankfurt
+
+      // --- Other ---
+      { id: 'oxford-tutor', lat: 51.7520, lng: -1.2577, customLabel: "", textOffset: 0, zoomAlt: 0.5 }, // Oxford
+      { id: 'oxford-coach', lat: 51.7520, lng: -1.2577, customLabel: "", textOffset: 0, zoomAlt: 0.6 }, // Oxford
+      { id: 'oxford-editor', lat: 51.7520, lng: -1.2577, customLabel: "", textOffset: 0, zoomAlt: 0.5 }, // Oxford
+      { id: 'ucl-rep', lat: 51.5246, lng: -0.1340, customLabel: "", textOffset: 0, zoomAlt: 1.5 }, // London
     ];
 
     const updateGlobeRotation = (lat, lng, alt = 2) => {
