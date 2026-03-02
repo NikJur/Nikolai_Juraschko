@@ -133,3 +133,8 @@ p {
     letter-spacing: 0.05em;
     margin: 0;
 }
+
+/* Ensure italics tags actually render as italics */
+i, em {
+    font-style: italic;
+}
