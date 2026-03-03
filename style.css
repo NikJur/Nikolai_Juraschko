@@ -41,6 +41,27 @@ body, html {
     text-align: right; /* Ensures text aligns to the right if it wraps */
 }
 
+/**
+ * Layout: Bottom Page Instructions
+ * Description: Positioned at the end of the document flow to appear 
+ * only after the user has scrolled through all content.
+ */
+.site-bottom-instructions {
+    margin-top: 50px; /* Space from the skills box */
+    margin-bottom: 20px; /* Space from the very bottom edge */
+    padding-right: 5%;
+    font-size: 0.9rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.5); 
+    z-index: 100;
+    pointer-events: none;
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Layout Containers */
 #globe-container {
     position: fixed;
