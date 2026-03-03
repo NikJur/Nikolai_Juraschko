@@ -192,6 +192,22 @@ i, em {
     text-decoration: underline;
 }
 
+/**
+ * DOI Link Styling
+ * Description: Styles the DOI link to be visually distinct.
+ */
+.doi-url {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.doi-url:hover {
+    color: #004aa5;
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
 .name-underline {
     text-decoration: underline;
     text-underline-offset: 2px;
