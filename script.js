@@ -22,9 +22,9 @@ window.addEventListener('DOMContentLoaded', () => {
     // Set up location data
     const locations = [
       // --- Education ---
-      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "Oxford", textOffset: -3.8 /** Nudge text west */, latOffset: 1.1, alt: 0.5 /** custom zoom in on globe */ },
-      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */, latOffset: 0 , alt: 2 /** default */ },
-      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0.2, latOffset: 0, alt: 2 },
+      { id: 'oxford-dphil', lat: 51.7520, lng: -1.2577, label: 'Oxford University', customLabel: "Oxford", textOffset: -3.8 /** Nudge text west */, latOffset: 1.1, zoomAlt: 0.5 /** custom zoom in on globe */ },
+      { id: 'ucl-msci', lat: 51.5246, lng: -0.1340, label: 'UCL', customLabel: "UCL", textOffset: 1.5 /** Nudge text east */, latOffset: 0 , zoomAlt: 2 /** default */ },
+      { id: 'regensburg-abitur', lat: 49.0134, lng: 12.1016, label: 'AMG', customLabel: "AMG", textOffset: 0.2, latOffset: 0, zoomAlt: 2 },
 
       // --- Relevant Experience ---
       { id: 'RSE-AI4Science', lat: 51.7520, lng: -1.2577, label:"", customLabel: "", textOffset: 0, latOffset: 0, zoomAlt: 0.6 }, // Oxford
@@ -39,6 +39,28 @@ window.addEventListener('DOMContentLoaded', () => {
       { id: 'oxford-coach', lat: 51.7520, lng: -1.2577, customLabel: "", textOffset: 0, latOffset: 0, zoomAlt: 0.6 }, // Oxford
       { id: 'oxford-editor', lat: 51.7520, lng: -1.2577, customLabel: "", textOffset: 0, latOffset: 0, zoomAlt: 0.5 }, // Oxford
       { id: 'ucl-rep', lat: 51.5246, lng: -0.1340, customLabel: "", textOffset: 0, latOffset: 0, zoomAlt: 1.5 }, // London
+
+      // --- Publications & Skills ---
+      { 
+        id: 'publications-skills', 
+        lat: 1.3746, 
+        lng: 103.7801, 
+        customLabel: "GESS", 
+        textOffset: 0, 
+        latOffset: 0, 
+        zoomAlt: 1.8
+      },
+      { 
+        id: 'cape-town-teaching', 
+        lat: -33.9249, 
+        lng: 18.4241, 
+        customLabel: "Teaching", 
+        textOffset: 2.0, 
+        latOffset: -0.5, 
+        zoomAlt: 1.5 
+      }
+
+
     ];
 
     const updateGlobeRotation = (lat, lng, alt = 2) => {
@@ -120,4 +142,30 @@ window.addEventListener('DOMContentLoaded', () => {
       globe.width(window.innerWidth);
       globe.height(window.innerHeight);
     });
+
+    /**
+     * Logic: Bottom Page Anchor Trigger
+     * Description: Specifically monitors the bottom anchor to pivot the globe 
+     * to SA once the user reaches the end of the page.
+     */
+    ScrollTrigger.create({
+        trigger: "#cape-town-teaching",
+        start: "top 97%", // Fires when the anchor is 5% from the bottom of the screen
+        onEnter: () => {
+            console.log("Triggering Cape Town"); // Helpful for debugging
+            const capeTown = locations.find(loc => loc.id === 'cape-town-teaching');
+            if (capeTown) {
+                updateGlobeRotation(capeTown.lat, capeTown.lng, capeTown.zoomAlt);
+            }
+        },
+        onLeaveBack: () => {
+            console.log("Returning to Singapore");
+            const gess = locations.find(loc => loc.id === 'publications-skills');
+            if (gess) {
+                updateGlobeRotation(gess.lat, gess.lng, gess.zoomAlt);
+            }
+        }
+    });
+
+    
 });

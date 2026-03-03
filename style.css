@@ -196,3 +196,36 @@ i, em {
     text-decoration: underline;
     text-underline-offset: 2px;
 }
+
+/**
+ * Layout: Full-width glass section
+ * Description: Applies backdrop-filter and a translucent background to create the glass effect.
+ */
+.skills-glass-box {
+    margin-top: 40px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05); /* Slight white tint */
+    backdrop-filter: blur(8px); /* Creates the frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    /* Box-sizing ensures padding doesn't increase width beyond container */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.skill-item {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+#cape-town-teaching {
+    height: 10px;
+    width: 100%;
+    visibility: hidden; /* Stays invisible but exists in the layout */
+}
