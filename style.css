@@ -285,6 +285,18 @@ i, em {
     filter: invert(1); /* Makes a black icon white for the dark theme */
 }
 
+.menu-toggle {
+    transition: transform 0.2s ease, filter 0.2s ease;
+    display: inline-block;
+}
+
+.menu-toggle:hover {
+    /* Simulates a physical lift toward the user */
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 8px rgba(0, 74, 165, 0.6));
+    cursor: pointer;
+}
+
 .nav-links {
     list-style: none;
     margin-top: 15px;
@@ -297,6 +309,7 @@ i, em {
     display: none; /* Hidden by default */
     flex-direction: column;
     gap: 10px;
+    transition: all 0.3s ease;
 }
 
 .nav-links.active {
@@ -307,9 +320,15 @@ i, em {
     color: #e0e0e0;
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: #004aa5;
+    /* Nudges the text slightly to indicate selection */
+    transform: translateX(5px);
 }
