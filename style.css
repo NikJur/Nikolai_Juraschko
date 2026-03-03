@@ -35,7 +35,7 @@ body, html {
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.5); 
+    color: rgba(255, 255, 255, 0.502); 
     z-index: 100; /* above everything */
     pointer-events: none; /* Prevents it from blocking clicks to the globe */
     text-align: right; /* Ensures text aligns to the right if it wraps */
@@ -228,4 +228,51 @@ i, em {
     height: 10px;
     width: 100%;
     visibility: hidden; /* Stays invisible but exists in the layout */
+}
+
+
+/**
+ * Layout: Navigation Menu
+ * Description: Fixed top-left positioning with a glass effect.
+ */
+.nav-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.menu-icon {
+    width: 35px;
+    cursor: pointer;
+    filter: invert(1); /* Makes a black icon white for the dark theme */
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 15px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #004aa5;
 }

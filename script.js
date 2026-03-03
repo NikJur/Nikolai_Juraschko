@@ -167,5 +167,35 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+    /**
+     * Logic: Navigation Menu Interaction
+     * Description: Manages the expansion of the menu and smooth scrolling 
+     * to section triggers.
+     */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            }
+            navLinks.classList.remove('active');
+        });
+    });
+
     
 });
