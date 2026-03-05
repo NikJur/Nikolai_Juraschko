@@ -293,7 +293,7 @@ i, em {
 .menu-toggle:hover {
     /* Simulates a physical lift toward the user */
     transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 0 8px rgba(0, 74, 165, 0.6));
+    filter: drop-shadow(0 0 8px #004aa5);
     cursor: pointer;
 }
 
