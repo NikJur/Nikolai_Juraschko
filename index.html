@@ -2,31 +2,284 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scientist CV | Interactive Globe</title>
+    <title>Nikolai Juraschko | CV</title>
     <link rel="stylesheet" href="style.css">
-    <script src="//unpkg.com/three"></script>
-    <script src="//unpkg.com/globe.gl"></script>
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://unpkg.com/globe.gl@2.32.2/dist/globe.gl.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
+    <div class="site-instructions">
+    Interact with globe to orbit &bull; Scroll on the right to explore
+    </div>
+
     <div id="globe-container"></div>
+    
+    <nav class="nav-container">
+        <div class="menu-toggle" id="menuToggle">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect y="4" width="30" height="3" rx="1.5" fill="#ffffff80"/>
+                        <rect y="13" width="30" height="3" rx="1.5" fill="#ffffff80"/>
+                        <rect y="22" width="30" height="3" rx="1.5" fill="#ffffff80"/>
+        </svg>            
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#intro">Top</a></li>
+            <li><a href="#trigger-education">Education</a></li>
+            <li><a href="#trigger-experience">Relevant Experience</a></li>
+            <li><a href="#trigger-other">Other</a></li>
+            <li><a href="#publications-skills">Publications & Technical Skills</a></li>
+        </ul>
+    </nav>
+
     <main>
-        <section id="intro"><h1>Nikolai Juraschko</h1></section>
+        <section id="intro" class="title-section">
+        <h1>Nikolai Juraschko | <span class="blue-text">CV</span></h1>
+        </section>
 
-        <section id="switzerland" class="location-step">
+        <section id="trigger-education" class="section-overlay-header">
+            <h2 class="overlay-title">Education</h2>
+        </section>
+
+
+        <section id="oxford-dphil" class="location-step">
             <div class="content-card">
-                <h2>PhD example</h2>
-                <p>Conducted research on a lot.</p>
+                <h2>DPhil/PhD in Biochemistry</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@University of Oxford, UK</span>
+                        <br>(10/2022 – 04/2026)
+                    </strong>
+                </p>
+                <p>Title: <i>Combining MD simulations with ML approaches to facilitate the morphological classification of E. coli in cryo-ET data</i></p>
+                
+                <p>Performed <strong>large-scale MD simulations</strong> of <strong>crowded protein</strong> systems and <strong>ligand binding</strong> with <strong>GROMACS/Amber</strong> and <strong>6 different force fields</strong>; analysed with Python on national <strong>HPC</strong> clusters. Administered <strong>data augmentation</strong> for affinity-<strong>VAE</strong> development, linking MD  to ML tasks.</p>
+            </div>
+        </section>  <! Comment | Title: Computational Biochemistry of Crowded Protein Systems and Ligand Binding | maybe for future?>
+
+        <section id="ucl-msci" class="location-step">
+            <div class="content-card">
+                <h2>MSci <strong>Mathematics</strong> with First Class Honours</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@UCL (University College London), UK</span>
+                        <br>(09/2017 – 07/2021)
+                    </strong>
+                </p>
+                <p>Title: <i>Sheaves and Čech Cohomology</i></p>
+                <p>BSc Mathematics en route; First Class in every year.
+                <br>Included CompSci modules on fundamentals of statistical (machine) learning.</p>
             </div>
         </section>
 
-        <section id="uk" class="location-step">
+        <section id="regensburg-abitur" class="location-step">
             <div class="content-card">
-                <h2>MSci</h2>
-                <p> Specialised in computational biology at Oxford.</p>
+                <h2>Abitur</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@Albertus-Magnus-Gymnasium Regensburg, Germany</span>
+                        <br>(09/2014 – 06/2016)
+                    </strong>
+                </p>
+                <p> 1.0 (top < 2% in Germany)</p>
             </div>
         </section>
+
+        <section id="trigger-experience" class="section-overlay-header">
+            <h2 class="overlay-title">Relevant Experience</h2>
+        </section>
+
+        <section id="RSE-AI4Science" class="location-step">
+            <div class="content-card">
+                <h2>Research Software Engineer - AI4Science (Prof Khalid Lab)</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@University of Oxford, UK</span>
+                        <br>(10/2025 – 03/2026)
+                    </strong>
+                </p>
+                <p> Porting <strong>DeepDriveMD (ML-enhanced MD simulations</strong> for biomolecular systems) from the US SUMMIT supercomputer to UK HPC, new NVIDIA Grace Hopper architecture, and overseeing its deployment. Collaboration with N8 Research Partnership.</p>
+            </div>
+        </section>
+
+        <section id="rosalind-franklin" class="location-step">
+            <div class="content-card">
+                <h2>Researcher on the Transformative Research Funding Programme</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@The Rosalind Franklin Institute, UK</span>
+                        <br>(10/2021 – 09/2025)
+                    </strong>
+                </p>
+                <p><i>Funding Awarded by UKRI-EPSRC</i></p>
+                <p><strong>Digital Twin Cell</strong> project advancing <i>in vivo</i> science by performing virtual experiments. Led <strong>collaboration</strong> for the Franklin with UKRI-STFC and The Alan Turing Institute on cryo-ET segmentation; co-authored 2 publications (ECCV & IUCrJ); validated the developed ML tools via a CZI posted Kaggle challenge.</p>
+            </div>
+        </section>
+
+        <section id="turing-enrichment" class="location-step">
+            <div class="content-card">
+                <h2>Turing Enrichment Scheme Award</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@The Alan Turing Institute, UK</span>
+                        <br>(10/2023 – 06/2024)
+                    </strong>
+                </p>
+                <p>Developed and published a <strong>Python package</strong> for <strong>processing protein structure data for downstream simulations and ML model training</strong> in an <strong>interdisciplinary</strong> collaboration with structural biologists and computer scientists.</p>
+            </div>
+        </section>
+
+        <section id="turing-dsg" class="location-step">
+            <div class="content-card">
+                <h2>Data Study Group</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@The Alan Turing Institute & National Oceanography Centre, UK</span>
+                        <br>(02/2023 – 03/2023)
+                    </strong>
+                </p>
+                <p><i>Title: Towards a Deeper Understanding of Eddies Using Machine Learning</i></p>
+                <p>Managed research project and <strong>supervision</strong> of 4 PhD students and consulted on applying ML models such as CNNs/(V)AEs and satellite data handling.</p>
+            </div>
+        </section>
+
+        <section id="cambridge-rep" class="location-step">
+            <div class="content-card">
+                <h2>Research Experience Placement (Prof Turchyn Lab)</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@University of Cambridge, UK</span>
+                        <br>(07/2021 – 09/2021)
+                    </strong>
+                </p>
+                <p><i>Funding Awarded by UKRI-NERC</i><br>
+                <br><i>Title: Carbon Storage in Salt Marsh Environments, a Machine Learning and Field-Based Approach</i></p>
+                <p>Pre-processed non-homogeneous satellite data and combined it with biogeochemistry data using Python and QGIS. Analysed data using ML models with <strong>Weights & Biases</strong> and <strong>XGboost</strong>.</p>
+            </div>
+        </section>
+
+        <section id="zerog-internship" class="location-step">
+            <div class="content-card">
+                <h2>Paid Internship</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@zeroG (IT consultancy), Frankfurt, Germany</span>
+                        <br>(07/2018 – 09/2018)
+                    </strong>
+                </p>
+                <p>Learned deep learning frameworks <strong>TensorFlow/PyTorch</strong>, algorithm development, and <strong>machine vision</strong> tasks. Acquired knowledge of issues in <strong>reliable AI/ML</strong> and applied ethical consequences in the aviation field. Delivered product to one of the main aircraft providers worldwide as a client.</p>
+            </div>
+        </section>
+
+        <section id="trigger-other" class="section-overlay-header">
+            <h2 class="overlay-title">Other</h2>
+        </section>
+
+        <section id="oxford-tutor" class="location-step">
+            <div class="content-card">
+                <h2>Quantitative Biochemistry Class Tutor</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@Department of Biochemistry, University of Oxford, UK</span>
+                        <br>(10/2025 – current)
+                    </strong>
+                </p>
+                <p>Computational Biochemistry, Mathematics, Data, and Statistics</p>
+            </div>
+        </section>
+
+        <section id="oxford-coach" class="location-step">
+            <div class="content-card">
+                <h2>Women’s Head Coach</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@St Anne’s College Boat Club, Oxford, UK</span>
+                        <br>(04/2025 – current)
+                    </strong>
+                </p>
+                <p>Led pastoral care and well-being of the athletes, fostering a <strong>supportive and resilient team culture</strong>. Provided tailored athlete development plans to <strong>support</strong> technical and physical <strong>growth</strong>. <strong>Led and structured</strong> training programmes for first and lower boats, on land and water, and tracked team performance.</p>
+            </div>
+        </section>
+
+        <section id="oxford-editor" class="location-step">
+            <div class="content-card">
+                <h2>Science Editor on Editorial Board</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@Pembroke Academic Journal, Oxford, UK</span>
+                        <br>(06/2022 – 07/2025)
+                    </strong>
+                </p>
+            </div>
+        </section>
+
+        <section id="ucl-rep" class="location-step">
+            <div class="content-card">
+                <h2>Elected Member of the Academic Board</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@UCL (University College London), UK</span>
+                        <br>(10/2018 – 09/2019)
+                    </strong>
+                </p>
+                <h2>Faculty Representative (MAPS)</h2>
+                <p>
+                    <strong>
+                        <span class="blue-text">@UCL (University College London), UK</span>
+                        <br>(10/2018 – 09/2019)
+                    </strong>
+                </p>
+                <p>Represented ~51,000 students on the Academic Board and ~2,900 students as the MAPS Faculty Representative.</p>
+            </div>
+        </section>
+
+        <section id="publications-skills" class="section-overlay-header">
+            <h2 class="overlay-title">Publications & Technical Skills</h2>
+        </section>
+
+        <section class="full-width-section">
+            <div class="publications-container">
+                <p class="orcid-link">
+                    ORCID: <a href="https://orcid.org/0000-0001-6748-1716" target="_blank" class="orcid-url">0000-0001-6748-1716</a> for full details
+                </p>
+                <div class="pub-list">
+                    <p>&bull; <span class="name-underline">Juraschko N.</span>; Klein-Rocha F.; Khalid S.; <strong><i>A Comparative Study of Periplasmic Crowding and Force Field Effects.</i></strong> JCTC, in preparation.</p>
+                    
+                    <p>&bull; <span class="name-underline">Juraschko N.</span>; Klein-Rocha F.; Khalid S.; <strong><i>Characterising the Conformational Dynamics of the Ribose Transporter B Protein in Escherichia coli: Enhanced Sampling via Multiple Force Fields.</i></strong> JCTC, 2026, DOI: <a href="https://doi.org/10.1021/acs.jctc.5c02068" target="_blank" class="doi-url">10.1021/acs.jctc.5c02068</a>.</p>
+                    
+                    <p>&bull; <span class="name-underline">Juraschko, N.</span>; Costa-Gomes, B.; Greer, J.; Parkhurst, J.; Mirecka, J.; Famili, M.; Rangel-Smith, C.; Strickson, O.; Lowe, A.; Basham, M.; Burnley, T.; <strong><i>PERC: a suite of software tools for the curation of cryoEM data with application to simulation, modeling and machine learning.</i></strong> IUCr, 2025. DOI: <a href="https://doi.org/10.1107/S2053230X25007575" target="_blank" class="doi-url">10.1107/S2053230X25007575</a>.</p>
+
+                    <p>&bull; Famili, M.; Mirecka, J.; Smith, C. R.; Kostanska, A.; <span class="name-underline">Juraschko, N.</span>; Costa-Gomes, B.; Palmer, C. M.; Thiyagalingam, J.; Burnley, T.; Basham, M.; Lowe, A. R. <strong><i>Affinity-VAE: Incorporating Prior Knowledge in Representation Learning from Scientific Images.</i></strong> In ; Springer, Cham, 2025, pp 189–206. DOI: <a href="https://doi.org/10.1007/978-3-031-91721-9_12" target="_blank" class="doi-url">10.1007/978-3-031-91721-9_12</a>.</p>
+
+                    <p>&bull; Mendoza M.; Abushaqra F.; Ou Y.; Dwyer M.; Farokhnejad S.; Sharma A.; Pawar Y.; Cerro G.; <span class="name-underline">Juraschko N.</span>; Ponnusami S. A.; <strong><i>Towards a Deeper Understanding of Eddies using Machine Learning.</i></strong> The Alan Turing Institute. 2023, DOI: <a href="https://doi.org/10.5281/zenodo.10590207" target="_blank" class="doi-url">10.5281/zenodo.10590207</a>.</p>
+
+                    <p>&bull; Khalid, S.; Brandner, A. F.; <span class="name-underline">Juraschko, N.</span>; Newman, K. E.; Pedebos, C.; Prakaash, D.; Smith, I. P. S.; Waller, C.; Weerakoon, D. <strong><i>Computational microbiology of bacteria: Advancements in molecular dynamics simulations.</i></strong> Structure (London, England: 1993) 2023, 31 (11), 1320–1327. DOI: <a href="https://doi.org/10.1016/j.str.2023.09.012" target="_blank" class="doi-url">10.1016/j.str.2023.09.012</a>.</p>
+                </div>
+
+                <div class="skills-glass-box">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <strong>Python & Co:</strong> MDAnalysis, MDTraj, NumPy, Pandas, Seaborn, matplotlib, scikit-learn, decorators, Weights & Biases, Keras/TensorFlow (prev. experience), PyTorch, git(Hub), bash, and more
+                        </div>
+                        <div class="skill-item">
+                            <strong>Molecular Dynamics:</strong> GROMACS, Amber & OpenMM suites; CHARMM, AMBER, MARTINI, and SIRAH force fields
+                        </div>
+                        <div class="skill-item">
+                            <strong>GitHub:</strong> <a href="https://github.com/NikJur" target="_blank" class="orcid-url">NikJur</a> 
+                        </div>
+                    </div>
+                </div>
+                <div id="cape-town-teaching"></div>
+            </div>
+        </section>
+
+        <div class="site-bottom-instructions">
+        Had some fun dusting off very old HTML, CSS, & JavaScript skills to build this interactive CV! &bull; Feel free to reach out to me!
+        </div>
 
     </main>
     <script src="script.js"></script>
